@@ -9,7 +9,7 @@ switch ($action) {
     break;
 
   case 'login':
-    // code...
+    include "../views/DisplayLogin.php";
     break;
 
   case 'display':
