@@ -9,31 +9,26 @@ switch ($action) {
     break;
 
   case 'login':
-    include "../views/DisplayLogin.php";
-    break;
-
-  case 'search':
-    include "../models/PostManager.php";
-    $posts = GetAllPosts();
-
-    include "../models/CommentManager.php";
-    $comments = array();
-    foreach ($posts as $onePost) {
-      $comments[$onePost['id']] = GetAllCommentsFromPostId($onePost['id']);
-    }
-
-    include "../views/DisplayPosts.php";
+    // code...
     break;
 
   case 'display':
   default:
     include "../models/PostManager.php";
+
     $posts = GetAllPosts();
+
+    if (isset($_GET["search"])) {
+      $search = $_GET["search"];
+      $posts = GetAllPostsWithComments($search);
+    }
 
     include "../models/CommentManager.php";
     $comments = array();
+
     foreach ($posts as $onePost) {
-      $comments[$onePost['id']] = GetAllCommentsFromPostId($onePost['id']);
+      $idPost = $onePost['id'];
+      $comments[$idPost] = GetAllCommentsFromPostId($idPost);
     }
 
     include "../views/DisplayPosts.php";

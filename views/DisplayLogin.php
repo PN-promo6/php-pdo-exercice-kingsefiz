@@ -59,14 +59,6 @@
 						<span class="focus-input100" data-placeholder="Password"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<span class="btn-show-pass">
-							<i class="zmdi zmdi-eye"></i>
-						</span>
-						<input class="input100" type="password" name="password">
-						<span class="focus-input100" data-placeholder="Confirm password"></span>
-					</div>
-
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
@@ -85,7 +77,7 @@
 							Sign Up
 						</a>
 					</div>
-					<div class="alert alert-danger mx-auto mt-3" id="failure" style="display:none" role="alert">
+					<div class="alert alert-danger mx-auto mt-3" id="loginFailure" style="display:none" role="alert">
 						<p><strong>Mot de passe erroné !</strong></p>
 					</div>
 				</form>

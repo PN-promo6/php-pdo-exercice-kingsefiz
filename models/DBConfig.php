@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 define("DB_HOST", "localhost"); // Set database host
 
 define("DB_USER", "root"); // Set database user

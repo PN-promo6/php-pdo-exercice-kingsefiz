@@ -37,6 +37,27 @@
         <div class="container-login100">
             <div class="wrap-login100">
                 <form class="login100-form validate-form" method="post">
+                    <?php
+                    // Display Error message
+                    if (!empty($error_message)) {
+                    ?>
+                        <div class="alert alert-danger">
+                            <strong>Error!</strong> <?= $error_message ?>
+                        </div>
+                    <?php
+                    }
+                    ?>
+
+                    <?php
+                    // Display Success message
+                    if (!empty($success_message)) {
+                    ?>
+                        <div class="alert alert-success">
+                            <strong>Success!</strong> <?= $success_message ?>
+                        </div>
+                    <?php
+                    }
+                    ?>
                     <span class="login100-form-title p-b-26">
                         Welcome
                     </span>
@@ -59,10 +80,18 @@
                         <span class="focus-input100" data-placeholder="Password"></span>
                     </div>
 
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <span class="btn-show-pass">
+                            <i class="zmdi zmdi-eye"></i>
+                        </span>
+                        <input class="input100" type="password" name="password">
+                        <span class="focus-input100" data-placeholder="Confirm Password"></span>
+                    </div>
+
                     <div class="container-login100-form-btn">
                         <div class="wrap-login100-form-btn">
                             <div class="login100-form-bgbtn"></div>
-                            <button type="submit" class="login100-form-btn" name="loginSubmit">
+                            <button type="submit" class="login100-form-btn" name="regSubmit">
                                 Sign Up
                             </button>
                         </div>
@@ -77,9 +106,7 @@
                             Login
                         </a>
                     </div>
-                    <div class="alert alert-danger mx-auto mt-3" id="failure" style="display:none" role="alert">
-                        <p><strong>Mot de passe erroné !</strong></p>
-                    </div>
+
                 </form>
             </div>
         </div>
@@ -107,24 +134,3 @@
 </body>
 
 </html>
-
-<?php
-
-if (isset($_POST["loginSubmit"])) {
-    $count = 0;
-    $res = mysqli_query($link, "SELECT * FROM user WHERE nickname ='$_POST[username]' AND password = '$_POST[password]'");
-    $count = mysqli_num_rows($res);
-    if ($count == 0) {
-?>
-        <script type="text/javascript">
-            document.getElementById('failure').style.display = 'block'
-        </script>
-    <?php
-    } else { ?>
-        <script type="text/javascript">
-            window.location = "../web/index.php"
-        </script>
-<?php
-    }
-}
-?>
